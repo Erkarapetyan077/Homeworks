@@ -10,6 +10,6 @@ function sumUpTo(n) {
     return sum;
 }
 
-let n = 1;
+let n = 5;
 let result = sumUpTo(n);
 console.log(result);

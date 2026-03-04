@@ -4,7 +4,7 @@ function countChar(str, char) {
 
     for (let i = 0; i < str.length; i++) {
 
-        if (str[i].includes(char)) {
+        if (str[i] === char) {
 
             count++;
         }
