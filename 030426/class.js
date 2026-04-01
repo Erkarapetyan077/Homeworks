@@ -1,6 +1,7 @@
 class Book {
 
     constructor({title, author, year}) {
+        
         if (!title) {
     
             throw new Error("do not add a book without title");
