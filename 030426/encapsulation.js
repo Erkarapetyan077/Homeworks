@@ -5,10 +5,10 @@ class Book {
   #isAvailable;
 
   constructor(title, author, year) {
-    this.#title = title;
-    this.#author = author;
-    this.#year = year;
-    this.#isAvailable = true;
+    this.title = title;
+    this.author = author;
+    this.year = year;
+    this.isAvailable = true;
   }
 
   get title() {

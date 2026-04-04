@@ -1,6 +1,4 @@
 class Animal {
-  name;
-  age;
   constructor(name, age) {
     if (typeof name !== "string") throw new Error("The name must be a string");
     if (typeof age !== "number" || isNaN(age))
@@ -28,8 +26,6 @@ class Animal {
 }
 
 class Dog extends Animal {
-  breed;
-
   constructor(name, age, breed) {
     if (typeof name !== "string") throw new Error("The name must be a string");
     if (typeof age !== "number" || isNaN(age))
@@ -52,7 +48,6 @@ class Dog extends Animal {
 }
 
 class Cat extends Animal {
-  color;
   constructor(name, age, color) {
     if (typeof name !== "string") throw new Error("The name must be a string");
     if (typeof age !== "number" || isNaN(age))
