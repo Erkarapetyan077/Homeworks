@@ -8,7 +8,7 @@ class Book {
     this.title = title;
     this.author = author;
     this.year = year;
-    this.isAvailable = true;
+    this.#isAvailable = true;
   }
 
   get title() {
@@ -91,7 +91,7 @@ class Reader {
   #borrowedBooks;
 
   constructor(name) {
-    this.#name = name;
+    this.name = name;
     this.#borrowedBooks = [];
   }
 
