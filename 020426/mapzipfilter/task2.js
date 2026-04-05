@@ -1,6 +1,6 @@
 let arr = ["anna", "john"];
 
-const newarr = arr.map((x) => {
+arr = arr.map((x) => {
   return x.toUpperCase();
 });
-console.log(newarr);
+console.log(arr);
