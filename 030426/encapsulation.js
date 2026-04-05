@@ -16,7 +16,7 @@ class Book {
 
   set title(value) {
     if (typeof value !== "string" || value === "") {
-      throw new Error("title cant be empty string");
+      return "title cant be empty string";
     }
 
     this.#title = value;
@@ -32,9 +32,7 @@ class Book {
       value[0] !== value[0].toUpperCase() ||
       value === ""
     ) {
-      throw new Error(
-        "The author should start with a capital letter and must be non empty string."
-      );
+      return "The author should start with a capital letter and must be non empty string.";
     }
 
     this.#author = value;
@@ -46,7 +44,7 @@ class Book {
 
   set year(value) {
     if (value < 0 || typeof value !== "number") {
-      throw new Error("The year should be a number and positive.");
+      return "The year should be a number and positive.";
     }
 
     this.#year = value;
@@ -62,7 +60,7 @@ class Book {
       return;
     }
 
-    throw new Error("not available");
+    return "not available";
   }
 
   returnBook() {
@@ -70,7 +68,7 @@ class Book {
       this.#isAvailable = true;
       return;
     }
-    throw new Error("The book is already available");
+    return "The book is already available";
   }
 
   matchesTitle(word) {
@@ -100,7 +98,7 @@ class Reader {
 
   set name(value) {
     if (value === "" || value[0] !== value[0].toUpperCase()) {
-      throw new Error("The name is misspelled.");
+      return "The name is misspelled.";
     }
     this.#name = value;
   }
@@ -116,11 +114,11 @@ class Reader {
   takeBook(book) {
     for (let i = 0; i < this.#borrowedBooks.length; ++i) {
       if (this.#borrowedBooks[i] === book) {
-        throw new Error("Book already borrowed");
+        return "Book already borrowed";
       }
     }
     if (!book.isAvailable) {
-      throw new Error("Book is not available");
+      return "Book is not available";
     }
 
     book.borrowBook();
@@ -131,7 +129,7 @@ class Reader {
     const exists = this.#borrowedBooks.includes(book);
 
     if (!exists) {
-      throw new Error("Book not found");
+      return "Book not found";
     }
 
     book.returnBook();
@@ -179,7 +177,7 @@ class Library {
 
   set name(value) {
     if (value === "" || value[0] !== value[0].toUpperCase()) {
-      throw new Error("The name is misspelled.");
+      return "The name is misspelled.";
     }
     this.#name = value;
   }
@@ -230,11 +228,11 @@ class Library {
     const book = this.findBookByTitle(title);
 
     if (!book) {
-      throw new Error("There is no book with this title");
+      return "There is no book with this title";
     }
 
     if (!book.isAvailable) {
-      throw new Error("Book is already borrowed");
+      return "Book is already borrowed";
     }
 
     reader.takeBook(book);
@@ -244,7 +242,7 @@ class Library {
     const book = this.findBookByTitle(title);
 
     if (!book) {
-      throw new Error("There is no book with this title");
+      return "There is no book with this title";
     }
     reader.giveBackBook(book);
   }
