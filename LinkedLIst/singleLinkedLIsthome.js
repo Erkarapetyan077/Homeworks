@@ -106,7 +106,11 @@ class SinglyLinkedList {
   }
   popBack() {
     if (this.empty()) throw new Error("LinkedList is empty");
-
+    if (!this.head.next) {
+      let res = this.head.value;
+      this.head = null;
+      return res;
+    }
     let curr = this.head;
     let prev = this.head;
     while (curr.next) {
@@ -128,6 +132,11 @@ class SinglyLinkedList {
 
   popFront() {
     if (this.empty()) throw new Error("LinkedList is empty");
+    if (!this.head.next) {
+      let res = this.head.value;
+      this.head = null;
+      return res;
+    }
 
     let res = this.head.value;
     this.#head = this.head.next;
@@ -161,17 +170,18 @@ class SinglyLinkedList {
     if (!Number.isInteger(index) || index < 0 || index >= this.size())
       throw new Error("Invalid index");
     if (index === 0) {
-      let res = this.head.value;
-      this.#head = this.head.next;
-      return res;
+      return this.popFront();
+    }
+    if (index === this.size() - 1) {
+      return this.popBack();
     }
     let i = 0;
     let curr = this.head;
     let prev = this.head;
     while (i != index) {
-      i++;
       prev = curr;
       curr = curr.next;
+      i++;
     }
 
     let res = curr.value;
